@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div class="container">
+  <h2>Add</h2>
+  <div *ngIf="UserForm.get('email').hasError('required') && user.submitted" class='alert alert-danger'>
+    Email is required
+  </div>
+  <div *ngIf="UserForm.get('firstname').hasError('required') && user.submitted" class='alert alert-danger'>
+    First Name is required
+  </div>
+  <div *ngIf="UserForm.get('lastname').hasError('required') && user.submitted" class='alert alert-danger'>
+    Last Name is required
+  </div>
+  <form [formGroup]="UserForm"  id="frmCountry" name="frmCountry"
+        #user="ngForm" (ngSubmit)="insertUser(user.value)">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input type="text" class="form-control" id="firstname" placeholder="Enter First Name" name="firstname" formControlName="firstname">
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name:</label>
+      <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name" name="lastname" formControlName="lastname">
+    </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" name="documentpath" id="image"
+             id="documentpath" accept="all/*"
+             formControlName="image"
+             >    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

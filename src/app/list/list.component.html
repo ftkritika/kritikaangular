@@ -1,0 +1,71 @@
+<section id="atemdancePageMain">
+  <div class="container-fluid pl10 pr10">
+    <div class="row">
+      <div class="col-12">
+        <div class="atemdancePageMainContainer">
+          <div class="topAreaTable">
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="leftInfo">
+                  <h4>Users</h4>
+                </div>
+                <select class="form-control nice-select"
+                        name="documenttype_id" (change)='compareChar(users,$event)'
+                    >
+                  <option class='option'
+                          *ngFor='let i of alphabet'
+                          [value]="i">{{i}}
+
+                  </option>
+                </select>
+              </div>
+              <div class="col-lg-7">
+                <div class="rightBtn text-right">
+                  <a routerLink="/insert"><i
+                    class="garyIcon">
+                    <span class="spnclass editalignmentactioncolumn">Add</span></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!users?.length"><h6>Records not found.</h6></div>
+          <div *ngIf="users?.length">
+            <div class="mainTable">
+              <table class="table table-borderless tablecustom">
+                <thead>
+                <tr>
+                  <th>Sr. No.</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Image</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users
+                                    let i=index" class="pointer">
+                  <td>{{i+1}}</td>
+                  <td>{{user.first_name}}</td>
+                  <td>{{user.last_name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>  <img id="image" alt="icon"
+                             src="{{user.avatar}}"
+                             onerror="this.src='assets/images/no-image-available.png';"
+                             width="20px" height="20px"></td>
+                  <td> <a (click)="delete(i)" ><i
+                    class="garyIcon"><img src="assets/img/comon/icons/edit.svg" data-toggle="tooltip" data-placement="bottom"
+                                          alt="">
+                    <span class="spnclass editalignmentactioncolumn">Delete</span></i></a></td>
+
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
